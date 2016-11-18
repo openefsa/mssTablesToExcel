@@ -35,11 +35,17 @@ for (xpath in xpaths) {
     columnNames <- table %>%
       xml_find_all(".//Columns/Caption") %>%
       xml_text
+
+    groupNames <- table %>%
+      xml_find_all(".//Columns/Group") %>%
+      xml_text
     
     #extract row names 
     rowNames <- table %>%
       xml_find_all(".//Rows/Caption") %>%
       xml_text
+    
+    
     
     #extract content of all cell as a vector
     cells <- table %>%
@@ -53,10 +59,16 @@ for (xpath in xpaths) {
                 byrow = T)
     
     dimnames(cellMatrix) <- list(rowNames,columnNames)
+    
+    df <- data_frame(caption=c("","",rowNames)) %>%
+      bind_cols(
+       rbind(groupNames,columnNames,as_data_frame(cellMatrix))) 
+     
+      
     # contstuct filename of the cv file
     fileName <- paste0("tables/",URLencode(paste0("t",counter,"-",tableName,"-",captionName,".csv"),reserved = T))
     
-    write.csv(cellMatrix,fileName)
+    write.csv(df,fileName,row.names = F)
     csvFiles <- c(csvFiles,fileName)
     }
 }
