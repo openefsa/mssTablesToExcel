@@ -1,12 +1,15 @@
-library(xmlview)
+
 library(xml2)
 
 library(tidyverse)
+library(openxlsx)
 
 #read xml document
 
-document <- xml2::read_xml("./044312_Dinotefuran_Apple_Draft_Dul_RCK_June_7_2016.xml") %>%
-  xml_ns_strip
+extractTables <- function(fileName) {
+
+    document <- xml2::read_xml(fileName) %>%
+        xml_ns_strip
 dir.create("tables",showWarnings = F)
 # create all xpath expressions to search for
 
@@ -15,7 +18,7 @@ xpaths <- c(".//Table",
             ".//PhysicochemicalPropertiesTable"
             )
 counter <- 0
-csvFiles <- c()
+dfs <- list()
 # iterate over all xpath expressions
 for (xpath in xpaths) {
   tables <- xml_find_all(document,xpath)
@@ -36,6 +39,7 @@ for (xpath in xpaths) {
       xml_find_all(".//Columns/Caption") %>%
       xml_text
 
+                                        #print(columnNames)
     groupNames <- table %>%
       xml_find_all(".//Columns/Group") %>%
       xml_text
@@ -66,11 +70,16 @@ for (xpath in xpaths) {
      
       
     # contstuct filename of the cv file
-    fileName <- paste0("tables/",URLencode(paste0("t",counter,"-",tableName,"-",captionName,".csv"),reserved = T))
+    #fileName <- paste0("tables/",URLencode(paste0("t",counter,"-",tableName,"-",captionName,".csv"),reserved = T))
     
-    write.csv(df,fileName,row.names = F)
-    csvFiles <- c(csvFiles,fileName)
-    }
+    #write.csv(df,fileName,row.names = F)
+    #csvFiles <- c(csvFiles,fileName)
+    dfs[[as.character(counter)]] <- df
+  }
+  openxlsx::write.xlsx(dfs,"tables.xlsx")
 }
 #zip all csv files together
-zip("tables.zip",csvFiles)
+                                        #zip("tables.zip",csvFiles)
+}
+
+##extractTables("./044312_Dinotefuran_Apple_Draft_Dul_RCK_June_7_2016.xml")
