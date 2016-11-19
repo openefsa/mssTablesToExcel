@@ -5,6 +5,7 @@ RUN install.r shiny xml2 tidyverse openxlsx
 COPY *.R /home/docker/
 
 WORKDIR /home/docker
+EXPOSE 8888
 CMD ["R", "-e", "shiny::runApp(port=8888,host='0.0.0.0')"]
 
 
