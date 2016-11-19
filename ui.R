@@ -1,5 +1,5 @@
 shinyUI(bootstrapPage(
-    fileInput("xmlFile","Choose xml file"),
+    fileInput("xmlFile","Choose mss xml file"),
     textOutput("message"),
     downloadLink("downloadData", "Download tables")
 

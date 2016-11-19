@@ -6,7 +6,7 @@ shinyServer(function(input, output) {
 
         inFile <- input$xmlFile
         if (is.null(inFile))
-            return("Tables not ready ...")
+            return("Tables not ready yet...")
         else {
             extractTables(inFile$datapath)
             return("Tables ready")
