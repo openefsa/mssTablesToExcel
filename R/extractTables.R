@@ -99,6 +99,18 @@ writeToExcel <- function(dfs,file = "tables.xlxs") {
 }
 
 
+#' Runs the export as a shiny app, where the input file can be choosen
+#' and the output is "table.xlsx:
+#' @export
+runShiny <- function() {
+  appDir <- system.file("shiny-app",package = "mssTablesToExcel")
+  if (appDir == "") {
+    stop("Could not find example directory. Try re-installing `mssTablesToExcel`.", call. = FALSE)
+  }
+
+  shiny::runApp(appDir, display.mode = "normal")
+}
+
 ## The extratction can be run like this
 ## extractTables("./044312_Dinotefuran_Apple_Draft_Dul_RCK_June_7_2016.xml") %>%
 ## exportToExcel()

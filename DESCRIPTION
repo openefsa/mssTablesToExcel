@@ -4,7 +4,9 @@ Version: 0.0.1
 Authors@R: person("Carsten", "Behring", email = "carsten.behring@esfa.europa.eu", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
 Depends:
-    R (>= 3.3.2)
+    R (>= 3.3.2),
+    shiny,
+    magrittr
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
