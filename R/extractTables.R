@@ -90,10 +90,10 @@ extractTables <- function(fileName) {
 #' Writes the list of data frames to an excel file.
 #' All cells have type 'text', so needed to be converted in Excel, if needed.
 #' @param dfs A list of data frames
-#' @parama file The xlsx file to write the extracted tables to
+#' @param file The xlsx file to write the extracted tables to
 #' @return NULL
 #' @export
-exportToExcel <- function(dfs,file = "tables.xlxs") {
+writeToExcel <- function(dfs,file = "tables.xlxs") {
     openxlsx::write.xlsx(dfs,"tables.xlsx",colNames = F,rowNames = F)
     print(paste(length(dfs),"sheets written"))
 }
