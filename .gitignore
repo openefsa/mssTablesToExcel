@@ -4,3 +4,10 @@
 .Ruserdata
 tables
 tables.zip
+.domino
+.dominoignore
+.dominoresults
+domino.log
+results
+tables.xlsx
+.Rbuildignore
