@@ -1,2 +1,4 @@
-Docker file
+Dockerfile
 .dockerignore
+mssTablesToExcel.Rproj
+.travis.yml
