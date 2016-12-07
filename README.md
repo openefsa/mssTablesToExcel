@@ -7,6 +7,7 @@ You can install mssTablesToExcel from github with:
 
 ```R
 # install.packages("devtools")
-devtools::install_github("mssTablesToExcel/behrica")
+devtools::install_github("behrica/mssTablesToExcel")
+
 ```
 
