@@ -2,3 +2,5 @@ Dockerfile
 .dockerignore
 mssTablesToExcel.Rproj
 .travis.yml
+^.*\.Rproj$
+^\.Rproj\.user$

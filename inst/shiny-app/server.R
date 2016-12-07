@@ -1,5 +1,6 @@
 library(magrittr)
 library(tidyverse)
+library(mssTablesToExcel)
 
 shinyServer(function(input, output) {
 
