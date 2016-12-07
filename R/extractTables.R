@@ -18,8 +18,7 @@ extractTables <- function(fileName) {
 
     xpaths <- c(".//Table",
                paste0(".//Table",1:9),
-               ".//PhysicochemicalPropertiesTable"
-               )
+               ".//PhysicochemicalPropertiesTable")
     counter <- 0
     dfs <- list()
     ## iterate over all xpath expressions
@@ -29,7 +28,6 @@ extractTables <- function(fileName) {
         for (table in tables) {
 
             counter <- counter + 1
-
             ## get table name and table caption
             tableName <- xml2::xml_attr(table,"Name")
             captionName <-  xml2::xml_attr(table,"Caption")
@@ -63,7 +61,10 @@ extractTables <- function(fileName) {
             cells <- table %>%
               xml2::xml_find_all(".//Cells") %>%
               xml2::xml_text()
+            if (length(cells)==0) {
+              next()
 
+            }
             ## convert cell content vector to matrix of row and columns
                                         #browser()
             cellMatrix <- matrix(cells,
@@ -82,6 +83,8 @@ extractTables <- function(fileName) {
                        rbind(groupNames,columnNames,dplyr::as_data_frame(cellMatrix)))
             dfs[[tableName]] <- df %>%
                 dplyr::select(-rowNumber)
+
+                                        #tidy_df <- data.frame(value=cells,rowname=rowNames,columnname=columnNames,group=groupNames)
         }
 
     }
@@ -111,6 +114,4 @@ runShiny <- function() {
   shiny::runApp(appDir, display.mode = "normal")
 }
 
-## The extratction can be run like this
-## extractTables("./044312_Dinotefuran_Apple_Draft_Dul_RCK_June_7_2016.xml") %>%
-## exportToExcel()
+
