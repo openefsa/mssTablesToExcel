@@ -79,8 +79,7 @@ extractTables <- function(fileName) {
             df[rowsTitle] <- c(rowsTitle,"",rowNames)
 
 
-            df <- cbind(df,
-                       rbind(groupNames,columnNames,dplyr::as_data_frame(cellMatrix)))
+            df <- cbind(df,as_data_frame(rbind(groupNames,columnNames,cellMatrix),row.names = F ))
             dfs[[tableName]] <- df %>%
                 dplyr::select(-rowNumber)
 
