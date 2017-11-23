@@ -11,3 +11,4 @@ domino.log
 results
 tables.xlsx
 .Rbuildignore
+packrat/lib*/

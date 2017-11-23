@@ -4,3 +4,7 @@ mssTablesToExcel.Rproj
 .travis.yml
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^packrat/
+^\.Rprofile$
+.xml
+.xlsx
