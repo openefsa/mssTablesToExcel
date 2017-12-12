@@ -1,6 +1,6 @@
 Package: mssTablesToExcel
 Title: Extracts all tables from an xml in format xmlns="http://oasis-lmc.org/mss
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: person("Carsten", "Behring", email = "carsten.behring@efsa.europa.eu", role = c("aut", "cre"))
 Description: Application to extract tables in excel from pesticides regulatory studies.
 Depends:
