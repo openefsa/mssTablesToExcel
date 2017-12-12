@@ -16,4 +16,3 @@ writeToExcel(dfs, file = "tables.xlxs")
 Writes the list of data frames to an excel file.
 All cells have type 'text', so needed to be converted in Excel, if needed.
 }
-

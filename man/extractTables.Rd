@@ -18,4 +18,3 @@ constructed from the xml attributes 'Name' and 'Caption'
 Extracts all xml <tables...> nodes into a list of data frames,
 where each dataframe is the 'cell' nodes inside <table > content.
 }
-

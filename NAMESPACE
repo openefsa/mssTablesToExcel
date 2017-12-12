@@ -3,4 +3,7 @@
 export(extractTables)
 export(runShiny)
 export(writeToExcel)
+importFrom(devtools,dev_package_deps)
 importFrom(magrittr,"%>%")
+importFrom(shiny,runApp)
+importFrom(stats,update)
