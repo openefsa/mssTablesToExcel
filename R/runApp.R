@@ -30,7 +30,7 @@ runShiny <- function(installDependencies = FALSE, ...) {
   ldots <- list(...)
   
   if (!is.null(ldots$appDir))
-    runApp(...) else
-    runApp(appDir = system.file("shiny-app", package = "mssTablesToExcel"), ...)
+    shiny::runApp(...) else
+    shiny::runApp(appDir = system.file("shiny-app", package = "mssTablesToExcel"), ...)
   
 }
